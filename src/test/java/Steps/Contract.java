@@ -84,8 +84,8 @@ public class Contract
         Thread.sleep(5000);
     }
 
-    @And("User click on Save button")
-    public void userClickOnSaveButton() throws InterruptedException, IOException {
+    @And("User will click on Save button")
+    public void userWillClickOnSaveButton() throws InterruptedException, IOException {
         System.out.println("User click on Save button");
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[3]/button")).click();
 
