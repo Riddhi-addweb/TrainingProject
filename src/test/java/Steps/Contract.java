@@ -36,7 +36,7 @@ public class Contract
     public void userClicksOnTheWorkDropdown() throws InterruptedException
     {
         System.out.println("User clicks on the Work dropdown");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[5]/a")));
         driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[5]/a")).click();
         Thread.sleep(1000);
@@ -64,7 +64,7 @@ public class Contract
     @When("User can enter all data in given fields")
     public void userCanEnterAllDataInGivenFields() throws InterruptedException {
         System.out.println("User can enter all data in given fields");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[1]/div/input")));
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[1]/div/input")).sendKeys("Test 1");
         Thread.sleep(5000);

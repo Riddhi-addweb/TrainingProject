@@ -27,10 +27,11 @@ public class Hooks
         System.setProperty("web-driver.chrome.driver", System.getProperty("user.dir") + "chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get("https://ttstage.addwebprojects.com/");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[1]/input[1]")).sendKeys("saurabhdhariwal.com@gmail.com");
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[2]/div[1]/input")).sendKeys("addweb123");
@@ -38,19 +39,19 @@ public class Hooks
 
         //Use TakesScreenshot method to capture screenshot
         TakesScreenshot screenshot0 = (TakesScreenshot)driver;
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         //Saving the screenshot in desired location
         File source0 = screenshot0.getScreenshotAs(OutputType.FILE);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         //Path to the location to save screenshot
         FileHandler.copy(source0, new File("/Users/addweb/Desktop/IdeaProjects/HooksProject/Screenshots/Login.png"));
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         System.out.println("Login Page Screenshot is captured");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[2]/button")).click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/header/div[1]/div[1]/div/h2")).getText();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
     }
 
     @After(order = 1)
