@@ -35,8 +35,8 @@ public class Leaves_Steps
         Thread.sleep(3000);
     }
 
-    @Given("User is on Dashboard sidebar menu")
-    public void user_is_on_dashboard_sidebar_menu() throws InterruptedException {
+    @Given("User is on the Dashboard sidebar menu")
+    public void user_is_on_the_dashboard_sidebar_menu() throws InterruptedException {
         System.out.println("User is on the Dashboard sidebar menu");
 
     }
