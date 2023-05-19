@@ -69,7 +69,7 @@ Feature: Leave Module Scenarios
     And Click on the Save Button
     Then Validation message will appear on the screen
 
-  @L987 @Textarea
+  @L987
   Scenario: To check if user is able to leave the text field blank or not.
     Given The user is viewing the Add Leave page
     When The User clicks on the Dropdown Menu
