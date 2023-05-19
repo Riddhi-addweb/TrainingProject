@@ -598,8 +598,8 @@ public class Leaves_Steps
         driver.findElement(By.cssSelector("#reason")).clear();
         Thread.sleep(2000);
     }
-    @And("Click on Save Button")
-    public void clickOnSaveButton() throws InterruptedException {
+    @And("Will Click on Save Button")
+    public void willClickOnSaveButton() throws InterruptedException {
         System.out.println("Click on Save Button");
         driver.findElement(By.xpath("//*[@id=\"save-leave-form\"]\n")).click();
         Thread.sleep(500);

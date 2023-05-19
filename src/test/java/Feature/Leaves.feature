@@ -76,5 +76,5 @@ Feature: Leave Module Scenarios
     And Selects Edit from the Menu
     And Text Field is displayed to user
     And The User leaves the text field blank
-    And Click on Save Button
+    And Will Click on Save Button
     Then It shows validation message
