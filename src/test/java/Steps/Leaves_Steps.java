@@ -35,8 +35,8 @@ public class Leaves_Steps
         Thread.sleep(3000);
     }
 
-    @Given("User is on the Dashboard sidebar menu")
-    public void user_is_on_the_dashboard_sidebar_menu() throws InterruptedException {
+    @Given("User is on sidebar menu")
+    public void user_is_on_sidebar_menu() throws InterruptedException {
         System.out.println("User is on the Dashboard sidebar menu");
 
     }
@@ -346,9 +346,9 @@ public class Leaves_Steps
     {
         System.out.println("User adds all zeros in calendar field");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[4]/div/input")));
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[4]/div/input")).clear();
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[4]/div/input")).sendKeys("00-00-0000");
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#single_date")));
+        driver.findElement(By.cssSelector("#single_date")).clear();
+        driver.findElement(By.cssSelector("#single_date")).sendKeys("00-00-0000");
     }
     @And("To save, User click the Save button")
     public void toSaveUserClickTheSaveButton() throws InterruptedException {

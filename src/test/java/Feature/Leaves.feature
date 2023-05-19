@@ -3,7 +3,7 @@ Feature: Leave Module Scenarios
 
   @L000
   Scenario: To check if user is redirected to Leaves Module or not.
-    Given User is on the Dashboard sidebar menu
+    Given User is on sidebar menu
     When User clicks on HR dropdown
     And User clicks on Leaves Module
     Then User is navigated to Leaves Module page
