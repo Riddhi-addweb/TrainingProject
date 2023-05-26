@@ -1,7 +1,7 @@
 @Lead
 Feature: Leads functionality
 
-  @S1 @leadCookies @Test1
+  @S123 @leadCookies @Test1
   Scenario: Check the Leads redirection from side menu
     Given The user on the site
     When The user click on Leads option
@@ -12,7 +12,7 @@ Feature: Leads functionality
     And Click on the save button
     Then The new lead is create
 
-  @S1 @leadCookies @Test1
+  @S13 @leadCookies @Test1
   Scenario: Check the selected Lead is deleted proper
 
     Given User is on the Leads page

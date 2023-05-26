@@ -4,10 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeStep;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.io.FileHandler;
@@ -29,7 +26,7 @@ public class Hooks
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1440, 900));
         driver.get("https://ttstage.addwebprojects.com/");
         Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[1]/input[1]")).sendKeys("saurabhdhariwal.com@gmail.com");
@@ -50,7 +47,7 @@ public class Hooks
         Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[2]/button")).click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("/html/body/header/div[1]/div[1]/div/h2")).getText();
+//        driver.findElement(By.xpath("/html/body/header/div[1]/div[1]/div/h2")).getText();
         Thread.sleep(1000);
     }
 
@@ -63,22 +60,6 @@ public class Hooks
         driver.quit();
         Thread.sleep(2000);
     }
-
-
-
-//    @BeforeStep(order = 1)
-//    public void BeforeStep()
-//    {
-//        System.out.println("-----------------------------------------------");
-//        System.out.println("----- This will run before every Scenario -----");
-//        System.out.println("-----------------------------------------------");
-//    }
-//    @AfterStep(order = 1)
-//    public void AfterStep(){
-//        System.out.println("----------------------------------------------");
-//        System.out.println("----- This will run after every Scenario -----");
-//        System.out.println("----------------------------------------------");
-//    }
 
     public WebDriver getDriver()
     {
