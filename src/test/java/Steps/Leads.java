@@ -124,15 +124,10 @@ public class Leads
 
     //Delete
     @Given("User is on the Leads page")
-    public void userIsOnTheLeadsPage() throws InterruptedException {
+    public void userIsOnTheLeadsPage()
+    {
         System.out.println("User is on the Leads page");
-
-        Actions actions = new Actions(driver);
-        WebElement submitclass = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]"));
-        actions.moveToElement(submitclass);
-        Thread.sleep(100);
         driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[2]/a")).click();
-        Thread.sleep(100);
     }
     @And("User is able to see Dropdown Menu Link")
     public void UserIsAbleToSeeDropdownMenuLink()

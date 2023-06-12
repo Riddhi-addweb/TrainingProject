@@ -110,57 +110,69 @@ public class Leaves_Steps
 
     // Blank calendar field----------------------------------
     @Given("User is on Add Leave Page")
-    public void userIsOnAddLeavePage() throws InterruptedException {
+    public void userIsOnAddLeavePage() throws InterruptedException
+    {
         System.out.println("User is on Add Leave Page");
+
         // Edit with FOR Loop
         Actions action = new Actions(driver);
-        WebElement element = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table"));
-        action.moveToElement(element);
-        List<WebElement> rows = driver.findElements(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr"));
-        int Size = rows.size();
-        System.out.println("Total Rows are : " + Size);
-        for (int i = 1; i <= Size; i++)
-        {
-            WebElement rows1;
-            rows1 = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[3]/div/div/h5/a"));
-            String actual_name = rows1.getText();
 
-            System.out.println(actual_name);
-            String expected_name = "Aayushi Darji";
-            if (expected_name.equals(actual_name) == true)
+            Thread.sleep(1000);
+            WebElement tbdoy = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody"));
+                action.moveToElement(tbdoy);
+            List<WebElement> rows =driver.findElements(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr"));
+            int Size = rows.size();
+            System.out.println("Total Rows are :" + Size);
+            for (int i = 1; i <= Size; i++)
             {
-                for (int j = 1; j <= Size; j++)
+                WebElement rows1;
+                rows1 = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[3]/div/div/h5/a"));
+                String actual_name = rows1.getText();
+                System.out.println(actual_name);
+                String expected_name = "Aayushi Darji";
+                if (expected_name.equals(actual_name))
                 {
-                    WebElement rows2;
-                    rows2 = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[\"+j+\"]/td[6]"));
-                    String Actual_Name = rows2.getText();
-                    System.out.println(Actual_Name);
-                    String Expected_Name = "Pending";
-                    if (Expected_Name.equals(Actual_Name) == true)
+                    for (int j = 1; j <= Size; j++)
                     {
-                        System.out.println("Pending Text Found!!!");
-                        driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[6]")).getText();
-                        break;
-                    } else
-                    {
-                        System.out.println("Pending Text Not Found!!!");
+                        WebElement rows2;
+                        rows2 = driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + j + "]/td[6]"));
+                        String Actual_Name = rows2.getText();
+                        System.out.println(Actual_Name);
+                        String Expected_Name = "Pending";
+                        if (Expected_Name.equals(Actual_Name))
+                        {
+                            System.out.println("Pending Text Found!!!");
+                            driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[6]")).getText();
+                            break;
+                        }
+                        else
+                        {
+                            System.out.println("Pending Text Not Found!!!");
+                        }
                     }
+                    System.out.println("Expected Text Found!!!");
+                    Thread.sleep(1000);
+                    driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[9]/div/div/a")).click();
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1000));
+                    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[9]/div/div/div/a[4]")));
+                    driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[9]/div/div/div/a[4]")).click();
+                    Thread.sleep(2000);
+                    break;
                 }
-
-                System.out.println("Expected Text Found!!!");
-                Thread.sleep(100);
-                driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[9]/div/div/a")).click();
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[9]/div/div/div/a[4]")));
-                driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[" + i + "]/td[9]/div/div/div/a[4]")).click();
-                Thread.sleep(2000);
-                break;
-            } else
-            {
-                System.out.println("Expected Text Not Found!!!");
+                else
+                {
+                    System.out.println("Expected Text Not Found!!!");
+                }
             }
         }
-    }
+
+        {
+            // Exception occurred, handle it gracefully
+//            e.printStackTrace();
+//            System.out.println(e);
+            System.out.println("Test");
+        }
+
     @When("User click on Dropdown Menu Link")
     public void userClickOnDropdownMenuLink()
     {
@@ -179,8 +191,16 @@ public class Leaves_Steps
     @And("User leaves the Calendar Field Blank")
     public void userLeavesTheCalendarFieldBlank() throws InterruptedException {
         System.out.println("User leaves the Calendar Field Blank");
+
+//        Actions actions = new Actions(driver);
+//        WebElement submitclass = driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]"));
+//        actions.moveToElement(submitclass);
+//        Thread.sleep(100);
+//        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[4]/div/input")).click();
+//        Thread.sleep(100);
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[4]/div/input")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]")));
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[4]/div/input")).clear();
         Thread.sleep(2000);
     }
