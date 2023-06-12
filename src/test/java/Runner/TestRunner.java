@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         //plugin = {"pretty", "html:TickTalk_Report.html"},
         //dryRun = true
         //monochrome = true
-        //tags = "@L123"
+//        tags = "@Project"
         //name = {"TimeLog"}
 )
 public class TestRunner {

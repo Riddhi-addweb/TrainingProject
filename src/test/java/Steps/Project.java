@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 
+import static java.time.Duration.ofSeconds;
+
 public class Project
 {
     WebDriver driver;
@@ -87,6 +89,8 @@ public class Project
         Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[2]/div/input")).sendKeys("01-01-2023");
         Thread.sleep(2000);
+        WebDriverWait Datebar = new WebDriverWait(driver, Duration.ofSeconds(50));
+        Datebar.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[3]/div/input")));
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[3]/div/input")).sendKeys("01-05-2023");
         Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[5]/div/div[1]/button/div/div/div")).click();
@@ -107,10 +111,12 @@ public class Project
         Thread.sleep(5000);
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/h4[2]/a")).click();
         Thread.sleep(1000);
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[12]/div/div[1]/button/div/div/div")).click();
-        Thread.sleep(1000);
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[12]/div/div[1]/select/option[23]")).click();
-        Thread.sleep(1000);
+//        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[12]/div/div[1]/button/div/div/div")).click();
+//        Thread.sleep(1000);
+//        WebDriverWait ClockoutButton = new WebDriverWait(driver, ofSeconds(100));
+//        ClockoutButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[12]/div/div[1]/div/div[1]/input")));
+//        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[12]/div/div[1]/div/div[1]/input")).click();
+//        Thread.sleep(1000);
         WebDriverWait wait0 = new WebDriverWait(driver, Duration.ofSeconds(100));
         wait0.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#hours_allocated")));
         driver.findElement(By.cssSelector("#hours_allocated")).sendKeys("40");
@@ -223,8 +229,12 @@ public class Project
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[2]/div/input")).sendKeys("01-08-23");
         Thread.sleep(2000);
+        WebDriverWait date = new WebDriverWait(driver, Duration.ofSeconds(100));
+        date.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[3]/div/input")));
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[3]/div/input")).clear();
         Thread.sleep(1000);
+        WebDriverWait dateinput = new WebDriverWait(driver, Duration.ofSeconds(100));
+        dateinput.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[3]/div/input")));
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[3]/div/input")).sendKeys("01-12-23");
         Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[5]/div/div[1]/button")).click();
@@ -243,16 +253,16 @@ public class Project
         Thread.sleep(2000);
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[1]/div[10]/div/div/select/option[2]")).click();
         Thread.sleep(2000);
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[6]/div/div/button/div/div/div")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[6]/div/div/select/option[21]")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[7]/div/div[1]/button")).click();
-        Thread.sleep(2000);
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(50));
-        wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[7]/div/div[1]/select/option[5]")));
-        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[7]/div/div[1]/select/option[5]")).click();
-        Thread.sleep(2000);
+//        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[6]/div/div/button/div/div/div")).click();
+//        Thread.sleep(2000);
+//        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[6]/div/div/select/option[21]")).click();
+//        Thread.sleep(2000);
+//        driver.findElement(By.cssSelector("#save-project-data-form > div > div:nth-child(4) > div.col-md-3 > div > div.dropdown.bootstrap-select.form-control.select-picker.dropup > button")).click();
+//        Thread.sleep(2000);
+//        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(100));
+//        wait1.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#bs-select-21-4")));
+//        driver.findElement(By.cssSelector("#bs-select-21-4")).click();
+//        Thread.sleep(2000);
 //        WebDriverWait wait0 = new WebDriverWait(driver, Duration.ofSeconds(100));
 //        wait0.until(ExpectedConditions.elementToBeClickable(By.cssSelector("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[3]/div/input")));
 //        driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[3]/div/input")).clear();
