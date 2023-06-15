@@ -1,3 +1,4 @@
+@ClockinF
 Feature: Clock In and Out Functionality
 
   @ClockIn
