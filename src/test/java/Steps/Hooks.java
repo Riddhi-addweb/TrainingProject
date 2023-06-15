@@ -53,13 +53,14 @@ public class Hooks
         Thread.sleep(1000);
     }
     @After(order = 1)
-    public void TearDown(String[] args) throws InterruptedException, MessagingException, EmailException
+    public void TearDown() throws InterruptedException, MessagingException, EmailException
     {
         System.out.println("-----------------------");
         System.out.println("Ending Of The Scenario.");
         System.out.println("-----------------------");
         driver.quit();
         Thread.sleep(1000);
+
         //Email Sending Script-------------------------------------
         System.out.println("Email Test Has Been Started");
 //        Email email = new SimpleEmail();
@@ -83,7 +84,8 @@ public class Hooks
                 return new PasswordAuthentication("johnnyharpertesting110@gmail.com", "nulaxesuokdtihpq");
             }
         });
-        try {
+        try
+        {
             // Create email message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("johnnyharpertesting110@gmail.com"));
