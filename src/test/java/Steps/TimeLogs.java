@@ -14,6 +14,8 @@ import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static java.time.Duration.ofSeconds;
+
 public class TimeLogs
 {
     WebDriver driver;
@@ -165,16 +167,17 @@ public class TimeLogs
         driver.findElement(By.xpath("/html/body/div[1]/section/div[4]/div[2]/div/div[2]/div/table/tbody/tr[1]/td[8]/div/div/div/a[2]")).click();
         Thread.sleep(2000);
     }
-
     @And("User updates a data")
     public void userUpdatesAData() throws InterruptedException
     {
         System.out.println("User updates a data");
+        Thread.sleep(2000);
+        WebDriverWait ClockoutButton = new WebDriverWait(driver, ofSeconds(100));
+        ClockoutButton.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[2]/div/textarea")));
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[2]/div/textarea")).click();
         driver.findElement(By.xpath("/html/body/div[6]/div/div/div/div/form/div/div[2]/div[2]/div/textarea")).sendKeys(" Updated");
         Thread.sleep(1000);
     }
-
     @And("Clicks on save button")
     public void ClicksOnSaveButton() throws InterruptedException, IOException {
         System.out.println("Clicks on save button");

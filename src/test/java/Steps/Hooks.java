@@ -20,7 +20,6 @@ import java.util.Properties;
 public class Hooks
 {
    private WebDriver driver;
-
     @Before(order = 0)
     public void SetUp() throws InterruptedException, IOException {
         System.out.println("-------------------------");
@@ -31,14 +30,14 @@ public class Hooks
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        driver.manage().window().setSize(new Dimension(1440, 900));
+        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1280, 1024));
         driver.get("https://ttstage.addwebprojects.com/");
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[1]/input[1]")).sendKeys("saurabhdhariwal.com@gmail.com");
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[2]/div[1]/input")).sendKeys("addweb123");
         Thread.sleep(1000);
-
         //Use TakesScreenshot method to capture screenshot
         TakesScreenshot screenshot0 = (TakesScreenshot)driver;
         Thread.sleep(1000);
@@ -53,21 +52,16 @@ public class Hooks
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[2]/button")).click();
         Thread.sleep(1000);
     }
-
     @After(order = 1)
-    public void TearDown() throws InterruptedException
+    public void TearDown(String[] args) throws InterruptedException, MessagingException, EmailException
     {
         System.out.println("-----------------------");
         System.out.println("Ending Of The Scenario.");
         System.out.println("-----------------------");
         driver.quit();
         Thread.sleep(1000);
-    }
-
-    public static void main(String[] args) throws MessagingException, EmailException {
-
-        System.out.println("Test Has Been Started");
-//
+        //Email Sending Script-------------------------------------
+        System.out.println("Email Test Has Been Started");
 //        Email email = new SimpleEmail();
 //        email.setHostName("smtp.gmail.com");
 //        email.setSmtpPort(587);
@@ -78,51 +72,39 @@ public class Hooks
 //        email.setMsg("This is a test mail ... :-)");
 //        email.addTo("johnnyharpertesting76@gmail.com");
 //        email.send();
-//
 //        System.out.println("Email has Been Sent");
-
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", 587);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true"); // Enable TLS
-
         Session session = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication("johnnyharpertesting110@gmail.com", "nulaxesuokdtihpq");
             }
         });
-
         try {
             // Create email message
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("johnnyharpertesting110@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("khushi@addwebsolution.in"));
-            message.setSubject("Test Report");
-
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("saurabh@addwebsolution.com"));
+            message.setSubject("TickTalk Report");
             // Create a multipart message to support attachments
             Multipart multipart = new MimeMultipart();
-
             // Create the email body
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("This is the test report.");
-
+            messageBodyPart.setText("This is the TickTalk report.");
             // Add the email body to the multipart message
             multipart.addBodyPart(messageBodyPart);
-
             // Attach the report file (if applicable)
             MimeBodyPart attachmentBodyPart = new MimeBodyPart();
             attachmentBodyPart.attachFile(new File("TickTalk_Report.html"));
-
             // Add the attachment to the multipart message
             multipart.addBodyPart(attachmentBodyPart);
-
             // Set the content of the email message to the multipart message
             message.setContent(multipart);
-
             // Send the email
             Transport.send(message);
-
             System.out.println("Email sent successfully.");
         } catch (Exception e)
         {
@@ -169,7 +151,6 @@ public class Hooks
     //    }
     //    return data;
 //}
-
     public WebDriver getDriver()
     {
         return driver;

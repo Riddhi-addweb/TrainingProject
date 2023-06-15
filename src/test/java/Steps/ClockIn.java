@@ -11,6 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -41,10 +42,21 @@ public class ClockIn
     {
         System.out.println("User clicks on the Clock-In Button");
         // Path to go to Private Dashboard
-        Actions PrivateDashboardaction = new Actions(driver);
-        WebElement PrivateDashboardLink = driver.findElement(By.linkText("Private Dashboard"));
-        PrivateDashboardaction.moveToElement(PrivateDashboardLink).click().perform();
         Thread.sleep(3000);
+        System.out.println("Private Dashboard");
+        try {
+            WebDriverWait PrivateDashboard = new WebDriverWait(driver, Duration.ofSeconds(100));
+            PrivateDashboard.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Private Dashboard")));
+            Actions PrivateDashboardaction = new Actions(driver);
+            WebElement PrivateDashboardLink = driver.findElement(By.linkText("Private Dashboard"));
+            PrivateDashboardaction.moveToElement(PrivateDashboardLink).click().perform();
+            Thread.sleep(3000);
+            System.out.println("Private Dashboard");
+        } catch (Exception e) {
+            // Handle the exception here
+            System.out.println("Error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
         // Path to Click clockin button
         WebDriverWait ClockinButton = new WebDriverWait(driver, ofSeconds(100));
         ClockinButton.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[1]/section/div[3]/div[1]/div[2]/button")));
@@ -266,6 +278,9 @@ public class ClockIn
                         //                                        driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[1]/div/a")).click(); //-------- Private dashboard
 
                         // Private dashboard Xpath
+                        Thread.sleep(2000);
+                        WebDriverWait Privatedash = new WebDriverWait(driver, Duration.ofSeconds(100));
+                        Privatedash.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Private Dashboard")));
                         Actions PrivateDashboard = new Actions(driver);
                         WebElement PrivateDashboardLink = driver.findElement(By.linkText("Private Dashboard"));
                         PrivateDashboard.moveToElement(PrivateDashboardLink).click().perform();
@@ -329,6 +344,7 @@ public class ClockIn
     {
         System.out.println("User clicks on the Clock-Out Button");
         // Path to Private Dashboard
+        Thread.sleep(3000);
         Actions PrivateDashboardClockout = new Actions(driver);
         WebElement PDLink1 = driver.findElement(By.linkText("Private Dashboard"));
         PrivateDashboardClockout.moveToElement(PDLink1).click().perform();

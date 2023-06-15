@@ -7,11 +7,11 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"/Users/addweb/Desktop/IdeaProjects/HooksProject/src/test/java/Feature"},
-        glue = {"Steps"}
-        //plugin = {"pretty", "html:TickTalk_Report.html"},
+        glue = {"Steps"},
+        plugin = {"pretty", "html:TickTalk_Report.html"}
         //dryRun = true
         //monochrome = true
-//        tags = "@Project"
+        //tags = "@Contract"
         //name = {"TimeLog"}
 )
 public class TestRunner {
