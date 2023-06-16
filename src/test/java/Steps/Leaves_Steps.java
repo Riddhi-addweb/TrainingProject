@@ -23,50 +23,50 @@ public class Leaves_Steps
     {
         this.driver = hooks.getDriver();
 
-//        // HR Module
-//        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(50));
-//        wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/a")));
-//        driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/a")).click();
-//        Thread.sleep(2000);
+        // HR Module
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(50));
+        wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/a")));
+        driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/a")).click();
+        Thread.sleep(2000);
+
+        // Leave Module
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/div/a[2]")));
+        driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/div/a[2]")).click();
+        Thread.sleep(3000);
+
+//        // To count the rows in the sidebar menu
+//        Actions sidebaraction = new Actions(driver);
+//        WebElement sidebar = driver.findElement(By.id("mobile_menu_collapse"));
+//        sidebaraction.moveToElement(sidebar);
+//        List<WebElement> rows = driver.findElements(By.xpath("/html/body/aside/div[2]/div[2]/ul/li"));
+//        int rowsize = rows.size();
+//        System.out.println("The Total Rows Are:- " +rowsize);
+//        for (int i = 1; i <= rowsize; i++) {
+//            //----Sidebar common xpath
+//            WebElement HrModule;
+//            HrModule = driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[" + i + "]/a"));
+//            String actual_module = HrModule.getText();
+//            System.out.println(actual_module);
+//            String HRModule = "HR";
 //
-//        // Leave Module
-//        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(60));
-//        wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/div/a[2]")));
-//        driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[4]/div/a[2]")).click();
-//        Thread.sleep(3000);
-
-        // To count the rows in the sidebar menu
-        Actions sidebaraction = new Actions(driver);
-        WebElement sidebar = driver.findElement(By.id("mobile_menu_collapse"));
-        sidebaraction.moveToElement(sidebar);
-        List<WebElement> rows = driver.findElements(By.xpath("/html/body/aside/div[2]/div[2]/ul/li"));
-        int rowsize = rows.size();
-        System.out.println("The Total Rows Are:- " +rowsize);
-        for (int i = 1; i <= rowsize; i++) {
-            //----Sidebar common xpath
-            WebElement HrModule;
-            HrModule = driver.findElement(By.xpath("/html/body/aside/div[2]/div[2]/ul/li[" + i + "]/a"));
-            String actual_module = HrModule.getText();
-            System.out.println(actual_module);
-            String HRModule = "HR";
-
-            // To check that HR module is get or not
-            if (actual_module.equals(HRModule) == true) {
-                System.out.println("HR Module Found");
-                // Click on HR module
-                Actions Hraction = new Actions(driver);
-                WebElement HRModuleLink = driver.findElement(By.linkText("HR"));
-                Hraction.moveToElement(HRModuleLink).click().perform();
-                // Click on Attendance module
-                Actions Attendanceaction = new Actions(driver);
-                WebElement AttendanceSubMenuLink = driver.findElement(By.linkText("Leaves"));
-                Attendanceaction.moveToElement(AttendanceSubMenuLink).click().perform();
-                System.out.println("Leaves Module Found");
-                break;
-            } else {
-                System.out.println("HR Module Not Found");
-            }
-        }
+//            // To check that HR module is get or not
+//            if (actual_module.equals(HRModule) == true) {
+//                System.out.println("HR Module Found");
+//                // Click on HR module
+//                Actions Hraction = new Actions(driver);
+//                WebElement HRModuleLink = driver.findElement(By.linkText("HR"));
+//                Hraction.moveToElement(HRModuleLink).click().perform();
+//                // Click on Attendance module
+//                Actions Attendanceaction = new Actions(driver);
+//                WebElement AttendanceSubMenuLink = driver.findElement(By.linkText("Leaves"));
+//                Attendanceaction.moveToElement(AttendanceSubMenuLink).click().perform();
+//                System.out.println("Leaves Module Found");
+//                break;
+//            } else {
+//                System.out.println("HR Module Not Found");
+//            }
+//        }
     }
 
     @Given("User is on sidebar menu")
