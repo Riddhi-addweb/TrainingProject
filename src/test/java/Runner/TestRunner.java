@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"/Users/addweb/Desktop/IdeaProjects/HooksProject/src/test/java/Feature"},
         glue = {"Steps"},
-        plugin = {"pretty", "html:TickTalk_Report.html"}
+        plugin = {"pretty", "html:TickTalk_Timelogs_Report.html"},
         //dryRun = true
         //monochrome = true
-        //tags = "@Contract"
+        tags = "@TimeLogs"
         //name = {"TimeLog"}
 )
 public class TestRunner {

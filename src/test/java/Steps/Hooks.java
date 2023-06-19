@@ -9,17 +9,13 @@ import org.openqa.selenium.io.FileHandler;
 import org.apache.commons.mail.EmailException;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
-import java.util.Properties;
 
 public class Hooks
 {
    private WebDriver driver;
+
     @Before(order = 0)
     public void SetUp() throws InterruptedException, IOException {
         System.out.println("-------------------------");
@@ -60,58 +56,6 @@ public class Hooks
         System.out.println("-----------------------");
         driver.quit();
         Thread.sleep(1000);
-
-        //Email Sending Script-------------------------------------
-        System.out.println("Email Test Has Been Started");
-//        Email email = new SimpleEmail();
-//        email.setHostName("smtp.gmail.com");
-//        email.setSmtpPort(587);
-//        email.setAuthenticator(new DefaultAuthenticator("johnnyharpertesting110@gmail.com", "nulaxesuokdtihpq"));
-//        email.setSSLOnConnect(true);
-//        email.setFrom("johnnyharpertesting110@gmail.com");
-//        email.setSubject("TestMail");
-//        email.setMsg("This is a test mail ... :-)");
-//        email.addTo("johnnyharpertesting76@gmail.com");
-//        email.send();
-//        System.out.println("Email has Been Sent");
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", 587);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true"); // Enable TLS
-        Session session = Session.getInstance(properties, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("johnnyharpertesting110@gmail.com", "nulaxesuokdtihpq");
-            }
-        });
-        try
-        {
-            // Create email message
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("johnnyharpertesting110@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("saurabh@addwebsolution.com"));
-            message.setSubject("TickTalk Report");
-            // Create a multipart message to support attachments
-            Multipart multipart = new MimeMultipart();
-            // Create the email body
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("This is the TickTalk report.");
-            // Add the email body to the multipart message
-            multipart.addBodyPart(messageBodyPart);
-            // Attach the report file (if applicable)
-            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-            attachmentBodyPart.attachFile(new File("TickTalk_Report.html"));
-            // Add the attachment to the multipart message
-            multipart.addBodyPart(attachmentBodyPart);
-            // Set the content of the email message to the multipart message
-            message.setContent(multipart);
-            // Send the email
-            Transport.send(message);
-            System.out.println("Email sent successfully.");
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
     }
 
 //    // Login with CSV----------------------------------------------------
