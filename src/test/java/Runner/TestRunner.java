@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"/Users/addweb/Desktop/IdeaProjects/HooksProject/src/test/java/Feature"},
+        features = {"/home/addweb/Downloads/HooksProject/src/test/java/Feature"},
         glue = {"Steps"},
         plugin = {"pretty", "html:TickTalk_Timelogs_Report.html"},
         //dryRun = true

@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.mail.EmailException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,11 +12,18 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import java.io.File;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Properties;
 
 import static java.time.Duration.ofSeconds;
 
@@ -26,6 +34,7 @@ public class ClockIn
     {
         this.driver = hooks.getDriver();
     }
+
     //Clock In-------------------------------------
     @Given("User is on the Dashboard")
     public void user_is_on_the_dashboard()
@@ -36,8 +45,10 @@ public class ClockIn
     public void user_is_able_to_see_the_clock_in_button()
     {
         System.out.println("User is able to see the Clock-In Button");
+
     }
     @When("User clicks on the Clock-In Button")
+
     public void user_clicks_on_the_clock_in_button() throws InterruptedException
     {
         System.out.println("User clicks on the Clock-In Button");

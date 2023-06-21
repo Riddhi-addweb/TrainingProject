@@ -9,8 +9,13 @@ import org.openqa.selenium.io.FileHandler;
 import org.apache.commons.mail.EmailException;
 
 import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 public class Hooks
 {
@@ -48,6 +53,59 @@ public class Hooks
         driver.findElement(By.xpath("/html/body/form/section/div/div/div/div/div[2]/button")).click();
         Thread.sleep(1000);
     }
+
+    public static void main(String[] args) throws MessagingException, EmailException {
+
+        System.out.println("Email Test Has Been Started");
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", 587);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true"); // Enable TLS
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("johnnyharpertesting110@gmail.com", "nulaxesuokdtihpq");
+            }
+        });
+
+        try {
+            // Create email message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("johnnyharpertesting110@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("khushi@addwebsolution.in"));
+            message.setSubject("Test Report");
+
+            // Create a multipart message to support attachments
+            Multipart multipart = new MimeMultipart();
+
+            // Create the email body
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText("This is the test report.");
+
+            // Add the email body to the multipart message
+            multipart.addBodyPart(messageBodyPart);
+
+            // Attach the report file (if applicable)
+            MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+            attachmentBodyPart.attachFile(new File("/Users/addweb/Desktop/IdeaProjects/HooksProject/TickTalk_Timelogs_Report.html"));
+
+            // Add the attachment to the multipart message
+            multipart.addBodyPart(attachmentBodyPart);
+
+            // Set the content of the email message to the multipart message
+            message.setContent(multipart);
+
+            // Send the email
+            Transport.send(message);
+
+            System.out.println("Email has been sent successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @After(order = 1)
     public void TearDown() throws InterruptedException, MessagingException, EmailException
     {

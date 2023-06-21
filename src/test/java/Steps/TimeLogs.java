@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.mail.EmailException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,8 +12,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import static java.time.Duration.ofSeconds;
 
@@ -194,11 +203,9 @@ public class TimeLogs
         System.out.println("TimeLog Edit Data Page Screenshot is captured");
         Thread.sleep(5000);
     }
-
     @Then("Updated data is display")
     public void updatedDataIsDisplay()
     {
         System.out.println("Updated data is display");
-        //System.out.println("Data is Updated successfully");
     }
 }
